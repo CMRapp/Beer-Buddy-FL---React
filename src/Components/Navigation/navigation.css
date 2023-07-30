@@ -1,0 +1,25 @@
+.navbar{
+    background-color: #9d3e27;
+    background-image: url(../../../public/img/palm-tile2.png);
+    background-repeat: repeat-x;
+    overflow: hidden;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #000000;
+    background-color: #d0ce91;
+}
+
+.nav-link.disabled {
+    color: #bd8c5f;
+    pointer-events: none;
+    cursor: default;
+}
+
+.nav-link {
+    color: #fef4cf;
+}
+
+.nav-link:hover {
+    color: yellow;
+}

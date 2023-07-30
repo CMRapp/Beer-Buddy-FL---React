@@ -1,0 +1,23 @@
+.footer{
+    background-color: #9d3e27;
+    background-image: url(../../../public/img/palm-tile2.png);
+    background-repeat: repeat-x;
+    overflow: hidden;
+    margin-top:10px;
+    padding-bottom:5px;
+}
+
+.footer p {
+    color: #fef4cf;
+ }
+
+ .footer a {
+    color:yellow;
+ }
+
+ .footer-logo{
+    float:right;
+    display:inline; 
+    vertical-align:middle;
+    height:65px;
+ }

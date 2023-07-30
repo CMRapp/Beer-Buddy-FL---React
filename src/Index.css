@@ -1,0 +1,79 @@
+/* Author: Christian M RApp | CMR Web studio
+   Date: 7/18/23
+   (c) 2023 Christian M Rapp | All Rights Reserved	
+   This stylesheet contains the GLOBAL styles for the app
+*/
+ 
+h1,h2,h3,h4,h5,h6{
+   color:#a5341b;
+}
+
+p {
+   color:black;
+}
+
+.hero-image{
+	max-width:1920px;
+	margin-left: -1px;
+}
+
+.page-image{
+	border-radius:2%;
+}
+
+.carousel-indicators, .carousel-control-prev-icon, .carousel-control-next-icon { 
+	display:none !important; 
+}
+
+th {
+    background-color:#b76a55 !important;
+    color: #fef4cf !important;
+}
+
+/* STYLE SCROLLBARS */
+/* Works on Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #fef4cf #212529;
+  }
+  
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: #212529;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: #fef4cf;
+    border-radius: 6px;
+    border: 3px solid #212529;
+  }
+
+  /* Global Modal and Card Styling */
+  .modal-header, .modal-footer, .card-header, .card-footer{
+  background-color: #9d3e27 !important;
+  background-image: url(../public/img/palm-tile2.png);
+  background-repeat: repeat-x;
+  color: #fef4cf;
+}
+
+.card{
+  padding:0px;
+}
+
+.modal-body h5{
+  color:black !important;
+}
+
+.hidden{
+  display:none;
+}
+
+.visible {
+  display:block;
+}
+
+  

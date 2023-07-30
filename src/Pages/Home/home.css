@@ -1,0 +1,14 @@
+/* Must use !important tags to override index.css for items declared there */
+.home-logo-scroll {
+    padding:10px 0;
+    margin: 10px 0;
+}
+
+.home-logo-scroll img {
+    max-height: 50px;
+    width:auto;
+    margin-right:45px;
+    vertical-align: middle;
+    display:inline;
+}
+
