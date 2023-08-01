@@ -6,8 +6,6 @@ import { UpdateBeerForm } from "./UpdateBeerForm";
 import BeerLogoScroller from "./BeerLogoScroller";
 
 import axios from "axios";
-import BootstrapTable from "react-bootstrap-table-next";
-import paginationFactory from "react-bootstrap-table2-paginator";
 
 import './beers.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
