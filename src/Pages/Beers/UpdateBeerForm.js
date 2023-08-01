@@ -19,6 +19,7 @@ export function UpdateBeerForm ({beerId, fetchData}) {
     const [abv, setAbv] = useState('');
     const [ibu, setIbu] = useState('');
     const [style, setStyle] = useState('');
+    const [logoURL, setLogoURL] = useState('');
     const [reviews, setReviews] = useState([]);             //currently not used
     const [dateAdded, setDateAdded] = useState(new Date()); //currently not used
 
@@ -45,13 +46,19 @@ export function UpdateBeerForm ({beerId, fetchData}) {
         if (name && brewery && abv && ibu && style ) {             
             //if valid input, try adding brewery
             try {
-                const newBeer = {name, brewery, abv, ibu, style};
+                const newBeer = {name, brewery, abv, ibu, style, logoURL};
                 const resp = await axios.put(Endpoint, newBeer);
             } catch (error) {
                 console.log("Error updating Beer! ", error);
             }
-                hideModal();                                    //close the modal
-                fetchData();                                    //refresh the data
+            setName('');                                //reset form inputs for good UX
+            setBrewery('');
+            setAbv('');
+            setIbu('');
+            setStyle('');
+            setLogoURL('');
+            hideModal();                                //close the modal
+            fetchData();                                //refresh the data
                 
         //if fields are empty, log error
         } else {
@@ -113,6 +120,14 @@ export function UpdateBeerForm ({beerId, fetchData}) {
                         placeholder = 'Enter Beer Style (American Pilsner, Lager, IPA, etc)'
                         onChange={(e) => setStyle(e.target.value)}
                         value={style}
+                    />
+
+                    <Form.Control  
+                        type='text'
+                        name='style'
+                        placeholder = 'Enter Beer Logo URL'
+                        onChange={(e) => setLogoURL(e.target.value)}
+                        value={logoURL}
                     />
                 
                 </Form>

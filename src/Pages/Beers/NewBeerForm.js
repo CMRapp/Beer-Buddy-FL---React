@@ -8,14 +8,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBeerMugEmpty } from '@fortawesome/free-solid-svg-icons'
 
 //NewBeerForm is a functional (stateless) component | recieves props
-export function NewBeerForm () {
+export function NewBeerForm ({fetchData}) {
     
     const [name, setName] = useState(''); 
     const [brewery, setBrewery] = useState('');
     const [abv, setAbv] = useState('');
     const [ibu, setIbu] = useState('');
     const [style, setStyle] = useState('');
-    const [logoURL, setLogoURL] = useState('');
+    const [imgURL, setImgURL] = useState('');
     const [reviews, setReviews] = useState([]);             //currently not used
     const [dateAdded, setDateAdded] = useState(new Date()); //currently not used
     
@@ -33,25 +33,14 @@ export function NewBeerForm () {
       setIsOpen(false);
     };
 
-   // API Call -gets list of beers
-   async function fetchData() {
-    try {
-      const resp = await axios.get(Endpoint);
-      setBeers(resp.data);
-      setPaginatedBeers(_(resp.data).slice(0).take(pageSize).value());
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-    }
-
    //function to add new beer
     async function addNewBeer () {
 
         //validate inputs are not blank
-        if (name && brewery && abv && ibu && style) {             
+        if (name && brewery && abv && ibu && style && imgURL) {             
             //if valid input, try adding brewery
             try {
-                const newBeer = {name, brewery, abv, ibu, style};
+                const newBeer = {name, brewery, abv, ibu, style, imgURL};
                 const resp = await axios.post(Endpoint, newBeer);
             } catch (error) {
                 console.log("Error adding Beer! ", error);
@@ -59,9 +48,9 @@ export function NewBeerForm () {
                 setName('');                                //reset form inputs for good UX
                 setBrewery('');
                 setAbv('');
-                setIbu(undefined);
+                setIbu('');
                 setStyle('');
-                setLogoURL('');
+                setImgURL('');
                 hideModal();                                //close the modal
                 fetchData();                                //refresh the data
                 
@@ -134,8 +123,8 @@ export function NewBeerForm () {
                         type='text'
                         name='logoURL'
                         placeholder = 'Enter Beer Logo URL'
-                        onChange={(e) => setLogoURL(e.target.value)}
-                        value={style}
+                        onChange={(e) => setImgURL(e.target.value)}
+                        value={imgURL}
                     />
                 
                 </Form>

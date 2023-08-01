@@ -15,8 +15,8 @@ tr{
     height: 305px;
 }
 .beer-logo-scroll img{
-    width:305px;
-    height:auto;
+    width:auto;
+    max-height:310px;
 }
 
 .small-listing{
