@@ -2,10 +2,13 @@ import React, {useState, useEffect} from 'react';
 import { Form, Modal, ModalBody, 
     ModalFooter, ModalHeader, ModalTitle, Button } from 'react-bootstrap';
 import axios from 'axios';
+
 import './beers.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBeerMugEmpty } from '@fortawesome/free-solid-svg-icons'
 
 //NewBeerForm is a functional (stateless) component | recieves props
-export function NewBeerForm ({fetchData}) {
+export function NewBeerForm () {
     
     const [name, setName] = useState(''); 
     const [brewery, setBrewery] = useState('');
@@ -29,8 +32,18 @@ export function NewBeerForm ({fetchData}) {
       setIsOpen(false);
     };
 
-   
-   //function to new brewery
+   // API Call -gets list of beers
+   async function fetchData() {
+    try {
+      const resp = await axios.get(Endpoint);
+      setBeers(resp.data);
+      setPaginatedBeers(_(resp.data).slice(0).take(pageSize).value());
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+    }
+
+   //function to add new beer
     async function addNewBeer () {
 
         //validate inputs are not blank
@@ -70,7 +83,10 @@ export function NewBeerForm ({fetchData}) {
             </ModalHeader>
             
             <ModalBody>
-                <p>Thanks for taking the time to add a new Florida Beer to our database! Please use the form below to enter your information.</p>
+                <p>Thanks for taking the time to add a new Florida Beer to our database! Please use the form below to enter your information.<br/>
+                <small><em>A good place to find beer logos is are from the breweries' web sites. Find the beer image and right click and select
+                     <strong> 'Copy Image Address'</strong></em></small></p>
+
                 <Form>
                     <Form.Control 
                         type='text'
@@ -116,11 +132,11 @@ export function NewBeerForm ({fetchData}) {
             </ModalBody>
             
             <ModalFooter>
-                <Button variant='warning' onClick={addNewBeer}>Add New Beer</Button>
+                <Button variant='warning' onClick={addNewBeer}>Add New Beer <FontAwesomeIcon icon={faBeerMugEmpty}/></Button>
                 <Button variant='secondary' onClick={hideModal}>Cancel</Button>    
             </ModalFooter>
         </Modal>
-        <Button variant='danger' onClick={showModal}>Add A Florida Beer</Button>     
+        <Button variant='danger' onClick={showModal}>Add A Florida Beer <FontAwesomeIcon icon={faBeerMugEmpty}/></Button>     
     </>
    );
 }

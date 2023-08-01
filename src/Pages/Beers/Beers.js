@@ -1,12 +1,19 @@
 import React,  { useState, useEffect} from "react";
-import {Container, Row, Col, Image, Table, Tooltip, Button, ButtonGroup } from 'react-bootstrap';
+import {Container, Row, Col, Image, Table, Alert, Button, Stack } from 'react-bootstrap';
 import BeerNotes from "./BeerNotes";
 import { NewBeerForm } from "./NewBeerForm";
 import { UpdateBeerForm } from "./UpdateBeerForm";
-
-import './beers.css';
+import BeerLogoScroller from "./BeerLogoScroller";
 
 import axios from "axios";
+import BootstrapTable from "react-bootstrap-table-next";
+import paginationFactory from "react-bootstrap-table2-paginator";
+
+import './beers.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBeerMugEmpty, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+
+
 
 //functional component 
 export default function Beers() {
@@ -21,14 +28,14 @@ export default function Beers() {
     // API Call -gets list of beers
     async function fetchData() {
         try {
-          const response = await axios.get(Endpoint);
-          setBeerList(response.data);
+          const beerponse = await axios.get(Endpoint);
+          setBeerList(beerponse.data);
         } catch (error) {
           console.error("Error fetching data:", error);
         }
       }
 
-    //useEffect prepares page for rendering | Calls fetchData()
+    //useEffect prepabeer page for rendering | Calls fetchData()
     useEffect(() => {
         fetchData();
       }, [Endpoint]);
@@ -36,7 +43,7 @@ export default function Beers() {
       //async function to delete a brewery
     async function deleteBeer(beerId) {
         try {
-            const resp = await axios.delete(`${Endpoint}/${beerId}`);
+            const beerp = await axios.delete(`${Endpoint}/${beerId}`);
 
             //update state to reflect deleted brewery using filter
             setBeerList((beerList) =>
@@ -55,18 +62,13 @@ export default function Beers() {
 
             <Container>
                 <Row className="text-center">
-                    <Col md={8}>
-                    <h1>Our Florida Beer List</h1> 
-                    <h5><em>Is our list missing something? Help us make our list complete!</em></h5>
-                        <p>
-                            Beer Buddy Florida is still in its infancy. Your help will enable us to grow! The table below shows the breweries and their beers that we currently
-                            currently have indexed. <em>If your favorite is not on the list, click the button below to add it!</em> <strong><em><br/><br/>Thanks for helping Beer Buddy Florida to grow!</em></strong>    
-                        </p> 
-
+                    <Col md={9}>
+                    
                                                 
                         <Table striped bordered hover variant="warning" className='w-100'>
                             <thead>
                                 <tr>
+                                    <th>Logo</th>
                                     <th className=''>Beer</th>
                                     <th className=''>ABV</th>
                                     <th className=''>IBU</th>
@@ -80,26 +82,36 @@ export default function Beers() {
                             
                             
                             <tbody>
-                                {beerList.map((res) => (
-                                    <tr key={res.id}>
-                                        <td>{res.name}</td>
-                                        <td>{res.abv} %</td>
-                                        <td>{res.ibu}</td>
-                                        <td>{res.style}</td>
-                                        <td>{res.brewery}</td> 
-                                        <td><UpdateBeerForm fetchData={fetchData} breweryId={res.id}/></td>
-                                        <td><Button variant="danger" onClick={() => deleteBeer(res.id)}>Delete Beer</Button></td>
+                                {beerList.map((beer) => (
+                                    <tr key={beer.id}>
+                                        <td><img src={beer.imgURL} className='beer-image img-fluid img-responsive'/></td>
+                                        <td>{beer.name}</td>
+                                        <td>{beer.abv} %</td>
+                                        <td>{beer.ibu}</td>
+                                        <td>{beer.style}</td>
+                                        <td>{beer.brewery}</td> 
+                                        <td><UpdateBeerForm fetchData={fetchData} beerId={beer.id}/></td>
+                                        <td><Button variant="danger" onClick={() => deleteBeer(beer.id)} size="sm"><FontAwesomeIcon icon={faTrashCan}/></Button></td>
                                     </tr>
                                 ))}
                             </tbody>
                         </Table>
                     </Col>
 
-                    <Col md={4}>
-                        <div className="d-grid gap-2">
+                    <Col md={3}>
+                        <Stack gap={1}>
+                            <BeerLogoScroller />
+                            <p className="mt-2">
+                                The ultimate goal of Beer Buddy Florida is to become a comprehensive guide to Florida Craft Beers and their Breweries. Beer Buddy Florida is still in its infancy. 
+                                On this page, you will find information on Florida Craft Beers that we currently have indexed in our database. As you can see, the listing is quite limited at the moment.     
+                            </p>
+                            <Alert variant="warning" className="shadow p-3 mb-5 rounded mt-2">
+                                <h5><em>Is our list missing something?<br/>Help us make our list complete!</em></h5>
+                                <p><em>If your favorite is not on the list,<br/>click the <strong>Add A Beer <FontAwesomeIcon icon={faBeerMugEmpty}/></strong><br/>button to add it!</em></p>
+                            </Alert>
                             <NewBeerForm fetchData={fetchData}/>
                             <BeerNotes />
-                        </div>
+                        </Stack>
                     </Col>
                 </Row>  
             </Container>      

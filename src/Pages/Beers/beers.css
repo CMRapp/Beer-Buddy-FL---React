@@ -4,4 +4,26 @@ h1,h2,h3,h4,h5,h6 {
 
 tr{
     line-height:13px !important;
+    vertical-align: middle;
+}
+
+.beer-image{
+    width:auto;
+    max-height:50px !important;
+}
+.beer-logo-scroll{
+    height: 305px;
+}
+.beer-logo-scroll img{
+    width:305px;
+    height:auto;
+}
+
+.small-listing{
+    width:auto;
+    max-height:40px !important;
+}
+
+.page-link {
+    cursor:pointer;
 }

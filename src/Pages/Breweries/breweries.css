@@ -8,15 +8,13 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .brewery-logo-scroll img {
-    max-height: 200px;
-    vertical-align: middle;
-    display:inline;
-    vertical-align:baseline;
+    max-height: 175px;
+    justify-content: center;
 }
 
 div.brewery-logo-scroll{
-    height:200px;
-    width:410px;
+    height:175px;
+    width:auto;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -26,19 +24,27 @@ tr{
     line-height:13px !important;
 }
 
-.listing-logo{
-    max-height:85px;
-    min-height:60px;
-    width:auto;
-    vertical-align:middle;
-    display:inline;
-}
-
-.listing-info{
-    text-align: left !important;
-}
-
 .brewery-list{
     display:flex;
     flex-wrap: wrap;
+}
+
+.brewery-card img {
+    width:auto;
+    max-height:100px;
+}
+
+.card-text{
+    text-align: center;
+}
+
+.card{
+    margin-right:30px;
+    min-height:325px;
+}
+
+.card-header{
+    font-family:Roadkill;
+    font-size:30px;
+    text-shadow: 2px 2px #000000;
 }

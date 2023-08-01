@@ -3,10 +3,27 @@
    (c) 2023 Christian M Rapp | All Rights Reserved	
    This stylesheet contains the GLOBAL styles for the app
 */
- 
-h1,h2,h3,h4,h5,h6{
-   color:#a5341b;
+
+/* WEBFONTS */
+@font-face {
+  font-family: 'Roadkill';
+  src: url('../public/fonts/roadkillw00-regular-webfont.woff') format('woff2'),
+       url('../public/fonts/roadkillw00-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
 }
+
+/* TYPOGRAPHY */
+h1,h2,h3,h4{
+  font-family: Roadkill, system-ui, 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Open Sans', 'Helvetica Neue', sans-serif; 
+  color:#a5341b;
+}
+
+h1 {font-size: 5.5em;}
+h2 { font-size:4.5em;}
+h3 {font-size: 3.5em;}
+h4 {font-size: 3em;}
 
 p {
    color:black;
@@ -28,6 +45,10 @@ p {
 th {
     background-color:#b76a55 !important;
     color: #fef4cf !important;
+    font-family:Roadkill;
+    font-size:32px;
+    font-weight:100;
+    text-shadow: 2px 1px #000000;
 }
 
 /* STYLE SCROLLBARS */
@@ -60,8 +81,26 @@ th {
   color: #fef4cf;
 }
 
+.card-text, .modal-body{
+  text-align: center;
+}
+
 .card{
-  padding:0px;
+  margin-right:30px;
+  min-height:325px;
+}
+
+.card-header{
+  font-family:Roadkill;
+  font-size:40px ;
+  text-shadow: 2px 2px #000000;
+}
+
+.modal-title{
+  font-family:Roadkill;
+    font-size:50px !important;
+    font-weight:100;
+    text-shadow: 2px 1px #000000;
 }
 
 .modal-body h5{

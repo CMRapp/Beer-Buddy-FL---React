@@ -2,9 +2,12 @@ import React, {useState, useEffect} from 'react';
 import { Form, Modal, ModalBody, 
     ModalFooter, ModalHeader, ModalTitle, Button } from 'react-bootstrap';
 import axios from 'axios';
-import './breweries.css';
 
-//NewBeerForm is a functional (stateless) component | recieves props
+import './breweries.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowsRotate } from '@fortawesome/free-solid-svg-icons'
+
+//UpdateBreweryForm is a functional (stateless) component | recieves props
 export function UpdateBreweryForm ({breweryId, fetchData}) {
     
     //Define endpoint URL to include selected brewery id
@@ -17,6 +20,11 @@ export function UpdateBreweryForm ({breweryId, fetchData}) {
     const [city, setCity] = useState('');
     const [zip, setZip] = useState('');
     const [dateAdded, setDateAdded] = useState(new Date()); //currently not used
+
+    //useEffect prepares page for rendering | Calls fetchData()
+    useEffect(() => {
+        fetchData();
+      }, [Endpoint]);
     
     ///modal handling
     const [isOpen, setIsOpen] = React.useState(false);
@@ -60,7 +68,7 @@ export function UpdateBreweryForm ({breweryId, fetchData}) {
             centered
         >
             <ModalHeader>
-                <ModalTitle>UPDATE BREWERY</ModalTitle>
+                <ModalTitle>UPDATE BREWERY INFO</ModalTitle>
             </ModalHeader>
             
             <ModalBody>
@@ -118,11 +126,11 @@ export function UpdateBreweryForm ({breweryId, fetchData}) {
             </ModalBody>
             
             <ModalFooter>
-                <Button variant='warning' onClick={updateBrewery}>Update Brewery</Button>  
+                <Button variant='warning' onClick={updateBrewery}>Update This Brewery <FontAwesomeIcon icon={faArrowsRotate}/></Button>  
                 <Button variant='secondary' onClick={hideModal}>Cancel</Button>    
             </ModalFooter>
         </Modal>
-        <Button variant='warning' onClick={showModal}>Update Brewery</Button>   
+        <Button variant='warning' onClick={showModal} size='sm'><FontAwesomeIcon icon={faArrowsRotate}/> Update</Button>  
     </>
    );
 }

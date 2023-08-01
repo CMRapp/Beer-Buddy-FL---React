@@ -2,7 +2,10 @@ import React, {useState, useEffect} from 'react';
 import { Form, Modal, ModalBody, 
     ModalFooter, ModalHeader, ModalTitle, Button } from 'react-bootstrap';
 import axios from 'axios';
+
 import './breweries.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBeerMugEmpty } from '@fortawesome/free-solid-svg-icons'
 
 //NewBeerForm is a functional (stateless) component | recieves props
 export function NewBreweryForm ({fetchData}) {
@@ -17,6 +20,11 @@ export function NewBreweryForm ({fetchData}) {
     
     //Define endpoint URL
     const Endpoint = 'https://64bedc3b5ee688b6250d0246.mockapi.io/breweries';
+
+    //useEffect prepares page for rendering | Calls fetchData()
+    useEffect(() => {
+        fetchData();
+      }, [Endpoint]);
     
     ///modal handling
     const [isOpen, setIsOpen] = React.useState(false);
@@ -43,10 +51,11 @@ export function NewBreweryForm ({fetchData}) {
                 console.log("Error adding Brewery! ", error);
             }
                 setName('');                                //reset form inputs for good UX
-                setAbv('');
-                setIbu(undefined);
-                setStyle('');
-                hideModal();                                    //close the modal
+                setWebsite('');
+                setAddress1('');
+                setCity('');
+                setZip('');
+                hideModal();                                //close the modal
                 fetchData();                                //refresh the data
                 
         //if fields are empty, log error
@@ -117,11 +126,11 @@ export function NewBreweryForm ({fetchData}) {
             </ModalBody>
             
             <ModalFooter>
-                <Button variant='warning' onClick={addNewBrewery}>Add Brewery</Button>
+                <Button variant='warning' onClick={addNewBrewery}>Add Brewery <FontAwesomeIcon icon={faBeerMugEmpty}/></Button>
                 <Button variant='secondary' onClick={hideModal}>Cancel</Button>    
             </ModalFooter>
         </Modal>
-        <Button variant='danger' onClick={showModal}>Add A Brewery</Button>     
+        <Button variant='danger' onClick={showModal}>Add A Brewery <FontAwesomeIcon icon={faBeerMugEmpty}/></Button>     
     </>
    );
 }

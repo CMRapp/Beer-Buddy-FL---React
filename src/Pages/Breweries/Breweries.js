@@ -4,11 +4,10 @@ import BreweryLogoScroller from './BreweryLogoScroller';
 import CountyTable from "./CountyTable";
 import BreweryNotes from "./BreweryNotes";
 import { NewBreweryForm } from "./NewBreweryForm";
-import { UpdateBreweryForm } from "./UpdateBreweryForm";
-import './breweries.css';
+import BreweryCard from "./BreweryCard";
 
 import axios from "axios";
-
+import './breweries.css';
 
 //functional component
 export default function Breweries() {
@@ -57,45 +56,19 @@ export default function Breweries() {
             <Container>
                 <Row className="text-center">
                     <Col md={8}>
-                    <h1>Our Florida Brewery List</h1> 
-                    <h5><em>Is our list missing something? Help us make our list complete!</em></h5>
                         <p>
-                            Beer Buddy Florida is still in its infancy. Your help will enable us to grow! The table below shows the breweries and their beers that we currently
-                            currently have indexed. <em>If your favorite is not on the list, click the button below to add it!</em> <strong><em><br/><br/>Thanks for helping Beer Buddy Florida to grow!</em></strong>    
+                            The ultimate goal of Beer Buddy Florida is to become a comprehensive guide to Florida Craft Beers and their Breweries. 
+                            Beer Buddy Florida is still in its infancy. Below you will find information on Florida breweries that we currently
+                            have indexed in our database. As you can see, the listing is quite limited at the moment.     
                         </p> 
 
+                        <h5><em>Is our list missing something? Help us make our list complete!</em></h5>
+                        <p><em>If your favorite is not on the list, click the <strong>Add A Brewery</strong> button to add it!</em></p>
                         
-                        {breweryList.map((res) => (
+                        {breweryList.map((brewery) => (
                         
-                        <Row key={res.id}>
-                            <CardGroup>
-                            <Card border="danger" className="mb-4" style={{ width: '200px '}}>
-                                <Card.Header>{res.name}</Card.Header>
-                                
-                                <Card.Body>
-                                    <Row>
-                                    <Col md={6}>
-                                     <img src={res.logoURL} alt="Brewery Logo" className="listing-logo img-responsive"/>
-                                    </Col>
-
-                                    <Col md={6}>
-                                        <p className='listing-info'>{res.name}<br/>
-                                        {`${res.address1}   ${res.city}, FL ${res.zip}`}<br/>
-                                            <a href={res.website} target="_blank">{res.website}</a></p>
-                                    </Col>
-                                    </Row>
-                                </Card.Body>
-                               
-                                <Card.Footer>
-                                    <ButtonGroup>
-                                        <UpdateBreweryForm fetchData={fetchData} breweryId={res.id}/>
-                                        <Button variant="danger" onClick={() => deleteBrewery(res.id)}>Delete Brewery</Button>
-                                    </ButtonGroup>
-                                </Card.Footer>
-
-                            </Card>
-                            </CardGroup>
-                            
+                        <Row key={brewery.id} className="d-inline-flex justify-content-center">
+                            <BreweryCard brewery={brewery} fetchData={fetchData} deleteBrewery={deleteBrewery}/>                            
                         </Row>
                         ))}   
                     </Col>

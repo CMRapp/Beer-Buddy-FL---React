@@ -1,20 +1,21 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Home from './Pages/Home/Home';
-import Beers from './Pages/Beers/Beers';
-import Breweries from './Pages/Breweries/Breweries';
 import Navigation from './Components/Navigation/Navigation';
-import Reviews from './Pages/Reviews/Reviews';
-import Styles from './Pages/Styles/Styles';
 import Footer from './Components/Footer/Footer';
+
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
+
 
 
 
 
 export default function App() {
   return (
-    <div>
+    <div style={{ 
+      backgroundImage: "url(/img/website-bg.jpg)",
+      backgroundRepeat: 'no-repeat'}}>
         
         <Navigation/>
         <Footer/>

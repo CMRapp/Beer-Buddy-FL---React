@@ -1,6 +1,9 @@
 import React from 'react';
 import { Row, Col, Table, Modal, ModalBody, ModalFooter, ModalHeader, ModalTitle, Button } from 'react-bootstrap';
+
 import './breweries.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTable } from '@fortawesome/free-solid-svg-icons'
 
 //functional component | doess not alter state
 export default function CountyTable() {
@@ -226,7 +229,7 @@ export default function CountyTable() {
                     <Button variant='warning' onClick={hideModal}>Close Window</Button> 
                 </ModalFooter>
         </Modal>
-        <Button variant="warning" onClick={showModal}>View Breweries by County Chart</Button>    
+        <Button variant="warning" onClick={showModal}>View Breweries by County Chart <FontAwesomeIcon icon={faTable}/></Button>    
         </>
     );
 }

@@ -2,9 +2,13 @@ import React, {useState, useEffect} from 'react';
 import { Form, Modal, ModalBody, 
     ModalFooter, ModalHeader, ModalTitle, Button } from 'react-bootstrap';
 import axios from 'axios';
-import './beers.css';
 
-//NewBeerForm is a functional (stateless) component | recieves props
+import './beers.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowsRotate } from '@fortawesome/free-solid-svg-icons'
+
+
+//UpdateBeerForm is a functional (stateless) component | recieves props
 export function UpdateBeerForm ({beerId, fetchData}) {
     
     //Define endpoint URL to include selected brewery id
@@ -12,11 +16,16 @@ export function UpdateBeerForm ({beerId, fetchData}) {
 
     const [name, setName] = useState(''); 
     const [brewery, setBrewery] = useState('');
-    const [abv, setabv] = useState('');
+    const [abv, setAbv] = useState('');
     const [ibu, setIbu] = useState('');
     const [style, setStyle] = useState('');
     const [reviews, setReviews] = useState([]);             //currently not used
     const [dateAdded, setDateAdded] = useState(new Date()); //currently not used
+
+    //useEffect prepares page for rendering | Calls fetchData()
+    useEffect(() => {
+        fetchData();
+      }, [Endpoint]);
     
     ///modal handling
     const [isOpen, setIsOpen] = React.useState(false);
@@ -42,7 +51,7 @@ export function UpdateBeerForm ({beerId, fetchData}) {
                 console.log("Error updating Beer! ", error);
             }
                 hideModal();                                    //close the modal
-                fetchData();                                //refresh the data
+                fetchData();                                    //refresh the data
                 
         //if fields are empty, log error
         } else {
@@ -71,7 +80,7 @@ export function UpdateBeerForm ({beerId, fetchData}) {
                         name = 'name'
                         placeholder = 'Beer Name'
                         value={name}
-                        onChange={(e) => setBeer(e.target.value)}                        
+                        onChange={(e) => setName(e.target.value)}                        
                     />
                     
                     <Form.Control 
@@ -86,7 +95,7 @@ export function UpdateBeerForm ({beerId, fetchData}) {
                         type='text'
                         name='abv'
                         placeholder = 'Enter ABV without percent sign'
-                        onChange={(e) => setWebsite(e.target.value)}
+                        onChange={(e) => setAbv(e.target.value)}
                         value={abv}
                     />
 
@@ -110,11 +119,11 @@ export function UpdateBeerForm ({beerId, fetchData}) {
             </ModalBody>
             
             <ModalFooter>
-                <Button variant='warning' onClick={updateBeer}>Update This Beer</Button>  
+                <Button variant='warning' onClick={updateBeer}>Update This Beer <FontAwesomeIcon icon={faArrowsRotate}/></Button>  
                 <Button variant='secondary' onClick={hideModal}>Cancel</Button>    
             </ModalFooter>
         </Modal>
-        <Button variant='warning' onClick={showModal}>Update Beer</Button>   
+        <Button variant='warning' onClick={showModal} size="sm"><FontAwesomeIcon icon={faArrowsRotate}/></Button>   
     </>
    );
 }

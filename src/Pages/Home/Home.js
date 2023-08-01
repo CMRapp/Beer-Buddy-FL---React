@@ -6,6 +6,7 @@ import Image from 'react-bootstrap/Image';
 import HeroSlider from './HeroSlider';
 import Alert from 'react-bootstrap/Alert';
 
+import AboutHome from './AboutHome';
 import HomeBeerList from './HomeBeerList';
 import HomeLogoScroller from './HomeLogoScroller';
 import './home.css';
@@ -49,6 +50,7 @@ export default class Home extends React.Component {
                     
                     <Col md={5}>
                         <Stack gap={3}>
+                            <AboutHome />
                             <HomeBeerList />
                         </Stack>
                     </Col>

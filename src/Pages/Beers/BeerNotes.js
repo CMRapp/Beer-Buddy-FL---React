@@ -1,6 +1,9 @@
 import React from 'react';
 import { Row, Col, Table, Modal, ModalBody, ModalFooter, ModalHeader, ModalTitle, Button } from 'react-bootstrap';
+
 import './beers.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 
 //functional component | doess not alter state
 export default function BeerNotes() {
@@ -34,7 +37,7 @@ export default function BeerNotes() {
                 <Button variant='warning' onClick={hideModal}>Close Window</Button> 
             </ModalFooter>
         </Modal>
-        <Button variant="primary" onClick={showModal}>About This Page</Button>    
+        <Button variant="primary" onClick={showModal}>About This Page <FontAwesomeIcon icon={faCircleInfo}/></Button>    
         </>
     );
 }
