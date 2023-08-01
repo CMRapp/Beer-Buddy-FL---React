@@ -1,5 +1,4 @@
-# Beer-Buddy-FL FINAL
-with API connections and full CRUD functionality
+# Beer Buddy FL FINAL with API Endpoints and CRUD
 A repository for the Promineo Tech FE Developer Final Project. Project is a React Router Application with React Bootstrap. Project connects to mock API endpoints and has the ability to perform all CRUD operations.
 
 ## :computer: This project is live on the internet. Visit <a href="http://www.beerbuddyfl.com" target="_blank">http://www.beerbuddyfl.com</a>
