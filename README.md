@@ -1,10 +1,23 @@
+<img src="https://github.com/CMRapp/Beer-Buddy-FL-React/assets/106698098/3ecdb187-03b5-4e4a-b6f3-769fb60f3401" alt="Beer Buddy FL Logo" align="center">
+
 # Beer Buddy FL FINAL with API Endpoints and CRUD
-A repository for the Promineo Tech FE Developer Final Project. Project is a React Router Application with React Bootstrap. Project connects to mock API endpoints and has the ability to perform all CRUD operations.
+A repository for the Promineo Tech FE Developer Final Project. Project is a React Router Application with React Bootstrap. Project connects to mock API endpoints and has the ability to perform all CRUD operations. <strong>Please note that the current endpoints for this project are mock API endpoints. Deleting an item from one
+endpoint will not delete related information from the other.
 
-## :computer: This project is live on the internet. Visit <a href="http://www.beerbuddyfl.com" target="_blank">http://www.beerbuddyfl.com</a>
+### :sparkler: Project Features:
+- Add, Update, Delete A Beer
+- Add, Update, Delete A Brewery
 
-### Getting Started with Create React App
+### :construction: Future Functionalities
+- Add Reviews Component
+- Add Active Search Component
+- Complete API and connect to it 
 
+### :computer: This project is live on the internet. Visit <a href="http://www.beerbuddyfl.com" target="_blank">http://www.beerbuddyfl.com</a>
+
+<details>
+  <summary>Getting Started with Create React App</summary>
+  <p>
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 #### Available Scripts
@@ -76,3 +89,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 #### Deployment
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+  </p>
+</details>
+
+---
+## Screenshots
+<div style="display:inline-block">
+  
+<img src="https://github.com/CMRapp/Beer-Buddy-FL-React/assets/106698098/0860dc0e-6e68-4637-92a0-cd4539eca4ed" alt="Beer Buddy Screenshot" style="display:inline-block; width:300px; height:auto;">
+<img src="https://github.com/CMRapp/Beer-Buddy-FL-React/assets/106698098/8d245bb3-9297-4c78-b18a-1a51b946ce3b" alt="Beer Buddy Screenshot" style="display:inline-block; width:300px; height:auto;">
+<img src="https://github.com/CMRapp/Beer-Buddy-FL-React/assets/106698098/8cbe0e56-9401-4c17-8e61-d5e1f6bba6c2" alt="Beer Buddy Screenshot" style="display:inline-block; width:300px; height:auto;">
+
+</div>
