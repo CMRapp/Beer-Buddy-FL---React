@@ -115,4 +115,11 @@ th {
   display:block;
 }
 
+/* FORM STYLING */
+input {
+  margin-bottom:5px;
+  color:black;
+  border-color: #a5341b !important;
+}
+
   

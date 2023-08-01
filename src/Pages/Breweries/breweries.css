@@ -31,20 +31,20 @@ tr{
 
 .brewery-card img {
     width:auto;
-    max-height:100px;
+    max-height:85px;
 }
 
-.card-text{
-    text-align: center;
+.brewery-card{
+    min-height:300px !important;
+    width:348px !important;
+    margin-right: 10px !important;
+} 
+
+.brewery-card .card-header{
+    font-size: 30px;
 }
 
-.card{
-    margin-right:30px;
-    min-height:325px;
-}
-
-.card-header{
-    font-family:Roadkill;
-    font-size:30px;
-    text-shadow: 2px 2px #000000;
+.brewery-card .card-footer {
+    width:100%;
+    margin:0;
 }

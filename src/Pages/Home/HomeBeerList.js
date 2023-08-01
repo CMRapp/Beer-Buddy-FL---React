@@ -68,13 +68,6 @@ function HomeBeerList () {
         </OverlayTrigger>
           <Card.Footer><Link to="/beers" className="btn btn-warning">See The Complete List</Link></Card.Footer>
         </Card>
-        
-        
-
-        
-    
-
-        
     </div>
   );
 }

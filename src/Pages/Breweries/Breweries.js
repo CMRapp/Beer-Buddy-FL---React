@@ -1,5 +1,5 @@
 import React,  { useState, useEffect} from "react";
-import {Container, Row, Col, Image, Table, Tooltip, Button, ButtonGroup, Card, CardGroup } from 'react-bootstrap';
+import {Container, Row, Col, Image, Alert, Stack} from 'react-bootstrap';
 import BreweryLogoScroller from './BreweryLogoScroller';
 import CountyTable from "./CountyTable";
 import BreweryNotes from "./BreweryNotes";
@@ -8,6 +8,9 @@ import BreweryCard from "./BreweryCard";
 
 import axios from "axios";
 import './breweries.css';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBeerMugEmpty, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 //functional component
 export default function Breweries() {
@@ -48,22 +51,21 @@ export default function Breweries() {
         }
     };
 
-      // render complete Breweries component JSX
+    // render complete Breweries component JSX
     return (
-        <>
-            <Image src="./img/craft-beer-hero.png" className="my-3 d-block mx-auto img-fluid" />
-
             <Container>
+                <Image src="./img/brewery-list-hero.jpg" className="my-3 d-block mx-auto img-fluid" />
                 <Row className="text-center">
-                    <Col md={8}>
-                        <p>
-                            The ultimate goal of Beer Buddy Florida is to become a comprehensive guide to Florida Craft Beers and their Breweries. 
-                            Beer Buddy Florida is still in its infancy. Below you will find information on Florida breweries that we currently
-                            have indexed in our database. As you can see, the listing is quite limited at the moment.     
-                        </p> 
+                    <Col md={10}>
+                    <p>The number of craft breweries have been rapidly growing in the United States over the last decade. According to the Brewers Association, in 2022 the number
+                        of microbreweries, brewpubs, taproom breweries and regional craft breweries reached an all-time high of <strong>9,552!</strong> <cite className="float-end">Source: 
+                            <a href="https://www.brewersassociation.org/press-releases/brewers-association-releases-annual-craft-brewing-industry-production-report-and-top-50-producing-craft-brewing-companies-for-2022/"
+                                target="_blank">Brewers Association</a></cite>                   
+                    </p>
 
-                        <h5><em>Is our list missing something? Help us make our list complete!</em></h5>
-                        <p><em>If your favorite is not on the list, click the <strong>Add A Brewery</strong> button to add it!</em></p>
+                    <p className='mt-2'>Florida only had 3 Craft breweries in 1989. The surge of Florida Craft Breweries began in the early 90s and has
+                        been growing every day since. As of 2022, there were almost 400 operational microbreweries in Florida. Here are the number of breweries by county.
+                    </p>
                         
                         {breweryList.map((brewery) => (
                         
@@ -73,27 +75,19 @@ export default function Breweries() {
                         ))}   
                     </Col>
 
-                    <Col md={4}>
-
-                            <BreweryLogoScroller className="mb-4"/>
-                            <p>The number of craft breweries have been rapidly growing in the United States over the last decade. According to the Brewers Association, in 2022 the number
-                                of microbreweries, brewpubs, taproom breweries and regional craft breweries reached an all-time high of <strong>9,552!</strong> <cite className="float-end">Source: 
-                                    <a href="https://www.brewersassociation.org/press-releases/brewers-association-releases-annual-craft-brewing-industry-production-report-and-top-50-producing-craft-brewing-companies-for-2022/"
-                                        target="_blank">Brewers Association</a></cite>                   
-                            </p>
-
-                            <p className='mt-5'>Florida only had 3 Craft breweries in 1989. The surge of Florida Craft Breweries began in the early 90s and has
-                            been growing every day since. As of 2022, there were almost 400 operational microbreweries in Florida. Here are the number of breweries by county.
-                            </p>
-
-                            <div className="d-grid gap-2">
-                                <CountyTable />
-                                <NewBreweryForm fetchData={fetchData}/>
-                                <BreweryNotes />
-                            </div>
+                    <Col md={2}>
+                        <BreweryLogoScroller className="mb-4"/>
+                        <Stack gap={1}>
+                            <Alert variant="warning" className="shadow p-3 rounded mt-2">
+                                <h5><em>Is our list missing something?<br/>Help us make our list complete!</em></h5>
+                                <p><em>If your favorite is not on the list, click the <strong>Add A Beer <FontAwesomeIcon icon={faBeerMugEmpty}/></strong><br/>button to add it!</em></p>
+                            </Alert>
+                            <CountyTable />
+                            <NewBreweryForm fetchData={fetchData}/>
+                            <BreweryNotes />
+                        </Stack>
                     </Col>
                 </Row>  
-            </Container>      
-        </>
+        </Container>     
     );
 }

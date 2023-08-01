@@ -1,13 +1,11 @@
 import React from "react";
+import { Container, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import './notfound.css';
 
 export default function NotFound() {
     return (
-        <>
-            <h1>Oops! You seem to be lost.</h1>
-            <p>Here are some helpful links:</p>
-            <Link to='/'>Home</Link>
-        </>
+        <Container>
+            <Link to="/beers"><Image fluid src="./img/not-found.png"  className='mt-3'/></Link>               
+        </Container>
     );
 }

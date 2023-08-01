@@ -15,6 +15,7 @@ export function NewBeerForm () {
     const [abv, setAbv] = useState('');
     const [ibu, setIbu] = useState('');
     const [style, setStyle] = useState('');
+    const [logoURL, setLogoURL] = useState('');
     const [reviews, setReviews] = useState([]);             //currently not used
     const [dateAdded, setDateAdded] = useState(new Date()); //currently not used
     
@@ -60,7 +61,8 @@ export function NewBeerForm () {
                 setAbv('');
                 setIbu(undefined);
                 setStyle('');
-                hideModal();                                    //close the modal
+                setLogoURL('');
+                hideModal();                                //close the modal
                 fetchData();                                //refresh the data
                 
         //if fields are empty, log error
@@ -125,6 +127,14 @@ export function NewBeerForm () {
                         name='style'
                         placeholder = 'Enter Beer Style (American Pilsner, Lager, IPA, etc)'
                         onChange={(e) => setStyle(e.target.value)}
+                        value={style}
+                    />
+
+                    <Form.Control  
+                        type='text'
+                        name='logoURL'
+                        placeholder = 'Enter Beer Logo URL'
+                        onChange={(e) => setLogoURL(e.target.value)}
                         value={style}
                     />
                 

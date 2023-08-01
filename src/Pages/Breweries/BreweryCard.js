@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Card, ButtonGroup} from 'react-bootstrap';
+import {Button, Card, ButtonGroup, Container} from 'react-bootstrap';
 import { UpdateBreweryForm } from "./UpdateBreweryForm";
 
 import './breweries.css';
@@ -14,17 +14,19 @@ export default function BreweryCard({ brewery,  fetchData, deleteBrewery }) {
     const Endpoint = "https://64bedc3b5ee688b6250d0246.mockapi.io/breweries";
 
     return (
-        <>
-            <Card style={{ flex:1, width: '350px'}} className='brewery-card my-2'>
+        <div>
+            <Card  className='brewery-card my-1'>
                 <Card.Header>{brewery.name}</Card.Header>
-                <Card.Img src={brewery.logoURL} alt={brewery.name} className=' img-responsive img-fluid mx-auto mt-2' />
+                <div style={{ height:'80px'}} className="mb-2 mx-2">
+                <Card.Img src={brewery.logoURL} alt={brewery.name} className=' img-responsive img-fluid mx-auto mt-2' /></div>
                 <Card.Body>
                     
-                    <Card.Text className='listing-info'>
+                    <Card.Text className='brewery-listing-info'>
                         {brewery.address1}<br/>
                         {brewery.city}, FL {brewery.zip}
                         <br/><a href={brewery.website} target="_blank">{brewery.website}</a>
                     </Card.Text>
+                    
                     <Card.Footer>
                         <ButtonGroup>
                             <UpdateBreweryForm breweryId={brewery.id} fetchData={fetchData}/>
@@ -33,6 +35,6 @@ export default function BreweryCard({ brewery,  fetchData, deleteBrewery }) {
                     </Card.Footer>
                 </Card.Body>
             </Card>
-        </>
+        </div>
     );
 }

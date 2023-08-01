@@ -13,8 +13,6 @@ import './beers.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBeerMugEmpty, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
-
-
 //functional component 
 export default function Beers() {
 
@@ -22,14 +20,14 @@ export default function Beers() {
     const Endpoint = "https://64bedc3b5ee688b6250d0246.mockapi.io/beers";
 
     //create array to hold logo information and use setState to create an empty array
-    const [beerList, setBeerList] = useState([]);
+    const [beers, setBeers] = useState([]);
 
 
     // API Call -gets list of beers
     async function fetchData() {
         try {
           const beerponse = await axios.get(Endpoint);
-          setBeerList(beerponse.data);
+          setBeers(beerponse.data);
         } catch (error) {
           console.error("Error fetching data:", error);
         }
@@ -46,8 +44,8 @@ export default function Beers() {
             const beerp = await axios.delete(`${Endpoint}/${beerId}`);
 
             //update state to reflect deleted brewery using filter
-            setBeerList((beerList) =>
-                beerList.filter((brewery) => brewery.id !== beerId)
+            setBeers((beers) =>
+                beers.filter((brewery) => brewery.id !== beerId)
             );
 
         } catch (error) {
@@ -57,8 +55,8 @@ export default function Beers() {
     
 
     return (
-        <>
-            <Image src="./img/craft-beers.png" className="my-3 d-block mx-auto img-fluid" />
+        <Container>
+            <Image src="./img/beer-list-hero.jpg" className="my-3 d-block mx-auto img-fluid" />
 
             <Container>
                 <Row className="text-center">
@@ -82,7 +80,7 @@ export default function Beers() {
                             
                             
                             <tbody>
-                                {beerList.map((beer) => (
+                                {beers.map((beer) => (
                                     <tr key={beer.id}>
                                         <td><img src={beer.imgURL} className='beer-image img-fluid img-responsive'/></td>
                                         <td>{beer.name}</td>
@@ -105,7 +103,7 @@ export default function Beers() {
                                 The ultimate goal of Beer Buddy Florida is to become a comprehensive guide to Florida Craft Beers and their Breweries. Beer Buddy Florida is still in its infancy. 
                                 On this page, you will find information on Florida Craft Beers that we currently have indexed in our database. As you can see, the listing is quite limited at the moment.     
                             </p>
-                            <Alert variant="warning" className="shadow p-3 mb-5 rounded mt-2">
+                            <Alert variant="warning" className="shadow p-3 rounded mt-2">
                                 <h5><em>Is our list missing something?<br/>Help us make our list complete!</em></h5>
                                 <p><em>If your favorite is not on the list,<br/>click the <strong>Add A Beer <FontAwesomeIcon icon={faBeerMugEmpty}/></strong><br/>button to add it!</em></p>
                             </Alert>
@@ -115,6 +113,6 @@ export default function Beers() {
                     </Col>
                 </Row>  
             </Container>      
-        </>
+            </Container>
     );
 }

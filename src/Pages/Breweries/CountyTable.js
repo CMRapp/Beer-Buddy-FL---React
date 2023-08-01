@@ -229,7 +229,7 @@ export default function CountyTable() {
                     <Button variant='warning' onClick={hideModal}>Close Window</Button> 
                 </ModalFooter>
         </Modal>
-        <Button variant="warning" onClick={showModal}>View Breweries by County Chart <FontAwesomeIcon icon={faTable}/></Button>    
+        <Button variant="warning" onClick={showModal}>County Chart <FontAwesomeIcon icon={faTable}/></Button>    
         </>
     );
 }

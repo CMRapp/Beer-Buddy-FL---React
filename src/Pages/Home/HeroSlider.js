@@ -9,24 +9,24 @@ return (
             <Carousel.Item interval={6000} controls={false}>
             <img
                 className="img-fluid"
-                src="./img/flight2-hd.jpg"
+                src="./img/flight1-hd.jpg"
                 alt="Craft Beer Flight"
             />
             </Carousel.Item>
-            
-            <Carousel.Item interval={7000}>
+
+            <Carousel.Item interval={6000}>
             <img
                 className="img-fluid"
-                src="./img/craft-collage-hd.jpg"
-                alt="Craft Beer Collage"
+                src="./img/beer-taps.jpg"
+                alt="Hops Image"
             />
             </Carousel.Item>
 
-            <Carousel.Item interval={7000}>
+            <Carousel.Item interval={6000}>
             <img
                 className="img-fluid"
                 src="./img/hopshd.jpg"
-                alt="Hops Image"
+                alt="Craft Beer Collage"
             />
             </Carousel.Item>
         </Carousel>

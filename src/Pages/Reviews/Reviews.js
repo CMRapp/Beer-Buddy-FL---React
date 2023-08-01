@@ -6,7 +6,9 @@ export default function Reviews () {
    
     return  (
         <>            
-            <Image fluid src="./img/coming-soon.jpg"  className='mt-3 shadow p-3 mb-5 bg-white rounded'/>
+            <Container>
+                <Image fluid src="./img/coming-soon.jpg"  className='mt-3 shadow p-3 mb-5 bg-white rounded'/>
+            </Container>   
         </>
     );
 
