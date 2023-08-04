@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -12,11 +12,38 @@ import Breweries from '../../Pages/Breweries/Breweries';
 import Reviews from '../../Pages/Reviews/Reviews';
 import Styles from '../../Pages/Styles/Styles';
 import NotFound from '../../Pages/NotFound/NotFound';
+import axios from 'axios';
 
 import './navigation.css';
 
-function Navigation() {
-   
+function Navigation({setResults}) {
+  const [search, setSearch] = useState('');
+
+  //get search
+  const fetchSearch =  (value) => {
+    //fetch beers from beers endpoint
+    //front end filtering
+    fetch("https://64bedc3b5ee688b6250d0246.mockapi.io/beers")
+    .then((response) => response.json())
+    .then((json) => {
+      //filter search results 
+      const results = json.filter((beer) => {
+        return (
+          value && 
+          beer &&
+          beer.name &&
+          beer.name.toLowerCase().includes(value)
+        ); 
+      });
+      setResults(results);
+    });
+  }
+
+  const handleChange = (value) => {
+    setSearch(value);
+    fetchSearch(value);
+  }//end handleChange
+
   return (
     
    <BrowserRouter>
@@ -44,7 +71,9 @@ function Navigation() {
           <Form className="d-flex ms-auto">
             <Form.Control
               type="search"
-              placeholder="Search is inactive"
+              value={search}
+              // onChange={(e) => handleChange(e.target.value)}
+              placeholder="Search is disabled..."
               className="me-2 disabled"
               aria-label="Search"
             />
@@ -65,5 +94,5 @@ function Navigation() {
     </Routes>
     </BrowserRouter>
   );
-}
+}//end Navigation
 export default Navigation;

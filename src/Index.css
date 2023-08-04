@@ -4,6 +4,12 @@
    This stylesheet contains the GLOBAL styles for the app
 */
 
+*{
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
 /* WEBFONTS */
 @font-face {
   font-family: 'Roadkill';

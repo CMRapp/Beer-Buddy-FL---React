@@ -23,6 +23,7 @@ export function UpdateBeerForm ({beerId, fetchData}) {
     const [reviews, setReviews] = useState([]);             //currently not used
     const [dateAdded, setDateAdded] = useState(new Date()); //currently not used
 
+    
     //useEffect prepares page for rendering | Calls fetchData()
     useEffect(() => {
         fetchData();
@@ -41,9 +42,8 @@ export function UpdateBeerForm ({beerId, fetchData}) {
     
     //function to update beer
     async function updateBeer () {
-
         //validate inputs are not blank
-        if (name && brewery && abv && ibu && style ) {             
+        if (name && brewery && abv && ibu && style && logoURL ) {             
             //if valid input, try adding brewery
             try {
                 const newBeer = {name, brewery, abv, ibu, style, logoURL};
@@ -86,7 +86,7 @@ export function UpdateBeerForm ({beerId, fetchData}) {
                         type='text'
                         name = 'name'
                         placeholder = 'Beer Name'
-                        value={name}
+                        value={name}                        
                         onChange={(e) => setName(e.target.value)}                        
                     />
                     
