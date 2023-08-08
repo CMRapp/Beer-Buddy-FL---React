@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -12,38 +12,12 @@ import Breweries from '../../Pages/Breweries/Breweries';
 import Reviews from '../../Pages/Reviews/Reviews';
 import Styles from '../../Pages/Styles/Styles';
 import NotFound from '../../Pages/NotFound/NotFound';
-import axios from 'axios';
+import BeerDetails from '../../Pages/Beers/BeerDetails';
 
 import './navigation.css';
 
-function Navigation({setResults}) {
-  const [search, setSearch] = useState('');
-
-  //get search
-  const fetchSearch =  (value) => {
-    //fetch beers from beers endpoint
-    //front end filtering
-    fetch("https://64bedc3b5ee688b6250d0246.mockapi.io/beers")
-    .then((response) => response.json())
-    .then((json) => {
-      //filter search results 
-      const results = json.filter((beer) => {
-        return (
-          value && 
-          beer &&
-          beer.name &&
-          beer.name.toLowerCase().includes(value)
-        ); 
-      });
-      setResults(results);
-    });
-  }
-
-  const handleChange = (value) => {
-    setSearch(value);
-    fetchSearch(value);
-  }//end handleChange
-
+function Navigation() {
+   
   return (
     
    <BrowserRouter>
@@ -66,14 +40,13 @@ function Navigation({setResults}) {
             <Nav.Link as={Link}  eventKey="/breweries" to="/breweries">Breweries</Nav.Link>
             <Nav.Link as={Link}  eventKey="/styles" to="/styles">Styles</Nav.Link>
             <Nav.Link as={Link}  eventKey="/reviews" to="/reviews">Reviews</Nav.Link>
+            <Nav.Link as={Link}  eventKey="/beer-details" to="/beer-details">Details</Nav.Link>
 
           </Nav>
           <Form className="d-flex ms-auto">
             <Form.Control
               type="search"
-              value={search}
-              // onChange={(e) => handleChange(e.target.value)}
-              placeholder="Search is disabled..."
+              placeholder="Search is inactive"
               className="me-2 disabled"
               aria-label="Search"
             />
@@ -86,13 +59,14 @@ function Navigation({setResults}) {
 
     <Routes>
         <Route exact path="/" activeClassName="active"  element={<Home />}/>
-        <Route exact path="/beers" activeClassName="active" element={<Beers />}/>
-        <Route exact path="/breweries" activeClassName="active" element={<Breweries />}/>
-        <Route exact path="/styles" activeClassName="active" element={<Styles />}/>
-        <Route exact path="/reviews" activeClassName="active" element={<Reviews />}/>
+        <Route path="/beers" activeClassName="active" element={<Beers />}/>
+        <Route path="/breweries" activeClassName="active" element={<Breweries />}/>
+        <Route path="/styles" activeClassName="active" element={<Styles />}/>
+        <Route path="/reviews" activeClassName="active" element={<Reviews />}/>
+        <Route path="/beer-details" activeClassName="active" element={<BeerDetails beerId={2} />}/>
         <Route  path="*" element={<NotFound />}/>
     </Routes>
     </BrowserRouter>
   );
-}//end Navigation
+}
 export default Navigation;

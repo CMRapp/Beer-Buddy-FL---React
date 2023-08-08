@@ -27,3 +27,11 @@ tr{
 .page-link {
     cursor:pointer;
 }
+
+.beer-info img{
+    display:flex;
+    max-height:250px;
+    width:auto;
+    margin:auto;
+    display:block;
+}
