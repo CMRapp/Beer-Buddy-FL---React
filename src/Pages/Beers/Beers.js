@@ -16,7 +16,7 @@ import BeerDetails from "./BeerDetails";
 //functional component 
 export default function Beers() {
 
-    //define BREWERIES endpoint
+    //define BREWERIES endpoint to use with axios
     const Endpoint = "https://64bedc3b5ee688b6250d0246.mockapi.io/beers";
 
     //create array to hold logo information and use setState to create an empty array
