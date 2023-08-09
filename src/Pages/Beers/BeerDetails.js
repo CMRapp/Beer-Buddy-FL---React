@@ -1,15 +1,16 @@
 import React , {setState, useState, useEffect} from "react";
 import { Container, Row, Col, Table, Card, Image } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useParams, Route } from "react-router-dom";
 
 import axios from "axios";
 import './beers.css';
 import CardHeader from "react-bootstrap/esm/CardHeader";
 import BeerTable from "./BeerTable";
 
-export default function  BeerDetails({beerId}){
+export default function  BeerDetails(){
     //get beerId fron parameters
-    
+    const key=useParams();
+
     //Store beer info id state
     let [beerInfo, setBeerInfo] = useState({});
     let [breweryName, setBreweryName] = useState('');
@@ -17,9 +18,10 @@ export default function  BeerDetails({beerId}){
     //Get beer info using beerId from URL upon component mounting
     useEffect (() => {
         async function getBeerInfo() {
-            const result = await axios.get(`https://64bedc3b5ee688b6250d0246.mockapi.io/beers/${beerId}`);
+            const result = await axios.get(`https://64bedc3b5ee688b6250d0246.mockapi.io/beers/${key}`);
             setBeerInfo(result.data);
             setBreweryName(result.data.brewery);
+            console.log(result.data.brewery);
         }
         getBeerInfo();
     }, [beerId.id]);
@@ -60,4 +62,6 @@ export default function  BeerDetails({beerId}){
             </Container>
         </div>
     );
+
+    
 }

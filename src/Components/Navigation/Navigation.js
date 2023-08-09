@@ -40,7 +40,6 @@ function Navigation() {
             <Nav.Link as={Link}  eventKey="/breweries" to="/breweries">Breweries</Nav.Link>
             <Nav.Link as={Link}  eventKey="/styles" to="/styles">Styles</Nav.Link>
             <Nav.Link as={Link}  eventKey="/reviews" to="/reviews">Reviews</Nav.Link>
-            <Nav.Link as={Link}  eventKey="/beer-details" to="/beer-details">Details</Nav.Link>
 
           </Nav>
           <Form className="d-flex ms-auto">
@@ -63,8 +62,9 @@ function Navigation() {
         <Route path="/breweries" activeClassName="active" element={<Breweries />}/>
         <Route path="/styles" activeClassName="active" element={<Styles />}/>
         <Route path="/reviews" activeClassName="active" element={<Reviews />}/>
-        <Route path="/beer-details" activeClassName="active" element={<BeerDetails beerId={2} />}/>
+        <Route path="/beer-details:key" activeClassName="active" element={<BeerDetails />}/>
         <Route  path="*" element={<NotFound />}/>
+
     </Routes>
     </BrowserRouter>
   );

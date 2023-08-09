@@ -1,5 +1,6 @@
 import React,  { useState, useEffect} from "react";
 import {Container, Row, Col, Image, Table, Alert, Button, Stack } from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 import BeerNotes from "./BeerNotes";
 import { NewBeerForm } from "./NewBeerForm";
 import { UpdateBeerForm } from "./UpdateBeerForm";
@@ -10,6 +11,7 @@ import axios from "axios";
 import './beers.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBeerMugEmpty, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import BeerDetails from "./BeerDetails";
 
 //functional component 
 export default function Beers() {
@@ -80,7 +82,10 @@ export default function Beers() {
                             <tbody>
                                 {beers.map((beer) => (
                                     <tr key={beer.id}>
-                                        <td><img src={beer.imgURL} className='beer-image img-fluid img-responsive'/></td>
+                                        <Link to={`/beer-details/${beer.id}`} element={<BeerDetails/>}>
+                                            <td><img src={beer.imgURL} className='beer-image img-fluid img-responsive'/></td>
+                                        </Link>
+                                        
                                         <td>{beer.name}</td>
                                         <td>{beer.abv} %</td>
                                         <td>{beer.ibu}</td>

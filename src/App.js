@@ -4,10 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './Components/Navigation/Navigation';
 import Footer from './Components/Footer/Footer';
 
-import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
-import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
-import { SearchResultsList } from './Components/Search/SearchResultsList';
-
 
 export default function App() {
   const [results, setResults] = useState([]);
@@ -18,7 +14,7 @@ export default function App() {
       backgroundRepeat: 'no-repeat'}}>
         
         <Navigation setResults={setResults}/>
-        <SearchResultsList results={results} />
+        {/* <SearchResultsList results={results} /> */}
         <Footer/>
         
     </div>
