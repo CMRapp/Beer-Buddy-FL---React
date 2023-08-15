@@ -33,7 +33,9 @@ The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
 ### Additional Installations Needed
-Bootstrap<br/> `npm i bootstrap`<br/><br/>
+React Bootstrap<br/> `npm i react-bootstrap bootstrap`<br/><br/>
+React Router Dom<br/>`npm i react-router-dom`<br/><br/>
+Axios<br/> `npm install axios`<br/><br/>
 Font Awesome<br/>
 `npm i --save @fortawesome/fontawesome-svg-core` <br/> 
 `npm install --save @fortawesome/free-solid-svg-icons` <br/>
