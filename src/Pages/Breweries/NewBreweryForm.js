@@ -16,6 +16,9 @@ export function NewBreweryForm ({fetchData}) {
     const [address1, setAddress1] = useState('');
     const [city, setCity] = useState('');
     const [zip, setZip] = useState('');
+    const [facebook, setFacebook] = useState('');
+    const [twitter, setTwitter] = useState('');
+    const [instagram, setInstagram] = useState('');
     const [dateAdded, setDateAdded] = useState(new Date());
     
     //Define endpoint URL
@@ -42,10 +45,10 @@ export function NewBreweryForm ({fetchData}) {
     async function addNewBrewery () {
 
         //validate inputs are not blank
-        if (name && logoURL && website && address1 && city && zip ) {             
+        if (name && logoURL && website && address1 && city && zip && facebook && twitter && instagram ) {             
             //if valid input, try adding brewery
             try {
-                const newBrewery = {name, logoURL, website, address1, city, zip};
+                const newBrewery = {name, logoURL, website, address1, city, zip, facebook, twitter, instagram};
                 const resp = await axios.post(Endpoint, newBrewery);
             } catch (error) {
                 console.log("Error adding Brewery! ", error);
@@ -55,6 +58,9 @@ export function NewBreweryForm ({fetchData}) {
                 setAddress1('');
                 setCity('');
                 setZip('');
+                setFacebook('');
+                setTwitter('');
+                setInstagram('');
                 hideModal();                                //close the modal
                 fetchData();                                //refresh the data
                 
@@ -96,7 +102,7 @@ export function NewBreweryForm ({fetchData}) {
 
                     <Form.Control 
                         type='text'
-                        placeholder = 'Website'
+                        placeholder = 'Website URL'
                         onChange={(e) => setWebsite(e.target.value)}
                         value={website}
                     />
@@ -120,6 +126,27 @@ export function NewBreweryForm ({fetchData}) {
                         placeholder = 'Zipcode'
                         onChange={(e) => setZip(e.target.value)}
                         value={zip}
+                    />
+
+                    <Form.Control  
+                        type='text'
+                        placeholder = 'Facebook URL'
+                        onChange={(e) => setFacebook(e.target.value)}
+                        value={facebook}
+                    />
+
+                    <Form.Control  
+                        type='text'
+                        placeholder = 'Twitter (X) URL'
+                        onChange={(e) => setTwitter(e.target.value)}
+                        value={twitter}
+                    />
+
+                    <Form.Control  
+                        type='text'
+                        placeholder = 'Instagram URL'
+                        onChange={(e) => setInstagram(e.target.value)}
+                        value={instagram}
                     />
                 
                 </Form>

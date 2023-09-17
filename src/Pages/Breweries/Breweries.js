@@ -80,7 +80,7 @@ export default function Breweries() {
                         <Stack gap={1}>
                             <Alert variant="warning" className="shadow p-3 rounded mt-2">
                                 <h5><em>Is our list missing something?<br/>Help us make our list complete!</em></h5>
-                                <p><em>If your favorite is not on the list, click the <strong>Add A Beer <FontAwesomeIcon icon={faBeerMugEmpty}/></strong><br/>button to add it!</em></p>
+                                <p><em>If your favorite is not on the list, click the <strong>Add A Brewery <FontAwesomeIcon icon={faBeerMugEmpty}/></strong><br/>button to add it!</em></p>
                             </Alert>
                             <CountyTable />
                             <NewBreweryForm fetchData={fetchData}/>

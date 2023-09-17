@@ -6,21 +6,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 
-import Home from '../../Pages/Home/Home';
-import Beers from '../../Pages/Beers/Beers';
-import Breweries from '../../Pages/Breweries/Breweries';
-import Reviews from '../../Pages/Reviews/Reviews';
-import Styles from '../../Pages/Styles/Styles';
-import NotFound from '../../Pages/NotFound/NotFound';
-import BeerDetails from '../../Pages/Beers/BeerDetails';
-
 import './navigation.css';
 
 function Navigation() {
    
   return (
     
-   <BrowserRouter>
     <Navbar expand="lg" className="navbar shadow-lg" sticky="top">
       <Container>
           <Navbar.Brand href="/home">
@@ -35,7 +26,7 @@ function Navigation() {
           <Navbar.Collapse id="basic-navbar-nav">
           <Nav variant="pills">
            {/*TODO - find how to highlight nav on page load */}
-            <Nav.Link as={Link}  eventKey="/" to="/">Home</Nav.Link>
+            <Nav.Link as={Link}  eventKey="/" to="/" >Home</Nav.Link>
             <Nav.Link as={Link}  eventKey="/beers" to="/beers">Beers</Nav.Link>
             <Nav.Link as={Link}  eventKey="/breweries" to="/breweries">Breweries</Nav.Link>
             <Nav.Link as={Link}  eventKey="/styles" to="/styles">Styles</Nav.Link>
@@ -55,18 +46,6 @@ function Navigation() {
      
       </Container>
     </Navbar>
-
-    <Routes>
-        <Route exact path="/" activeClassName="active"  element={<Home />}/>
-        <Route path="/beers" activeClassName="active" element={<Beers />}/>
-        <Route path="/breweries" activeClassName="active" element={<Breweries />}/>
-        <Route path="/styles" activeClassName="active" element={<Styles />}/>
-        <Route path="/reviews" activeClassName="active" element={<Reviews />}/>
-        <Route path="/beer-details:key" activeClassName="active" element={<BeerDetails />}/>
-        <Route  path="*" element={<NotFound />}/>
-
-    </Routes>
-    </BrowserRouter>
   );
 }
 export default Navigation;

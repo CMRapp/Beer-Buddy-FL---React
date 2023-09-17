@@ -2,15 +2,21 @@ h1,h2,h3,h4,h5,h6 {
     color:black;
 }
 
-tr{
-    line-height:13px !important;
+.beer-table tr{
+    line-height:10px !important;
+    vertical-align: middle;
+}
+
+.beer-table th{
+    line-height:20px !important;
     vertical-align: middle;
 }
 
 .beer-image{
     width:auto;
-    max-height:50px !important;
+    max-height:30px !important;
 }
+
 .beer-logo-scroll{
     height: 305px;
 }
@@ -35,3 +41,41 @@ tr{
     margin:auto;
     display:block;
 }
+
+.beer-listing-header{
+    color:white !important;
+}
+
+.beer-info{
+    white-space: pre-wrap;
+}
+
+.beer-info h4{
+    text-align:center !important;
+}
+
+/*TABLE HEAD ICONS*/
+.table th.up {
+    background-image: url("../../../public/img/up_arrow.png");
+  }
+  .table th.down {
+    background-image: url("../../../public/img/down_arrow.png");
+  }
+  .table th.default {
+    background-image: url("../../../public/img/default.png");
+  }
+
+  th.up,
+th.default,
+th.down {
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center right;
+}
+
+.page-item-active .page-link{
+    background-color:#dc3545 !important;
+    color:white;
+}
+
+.page-link{color:black;}

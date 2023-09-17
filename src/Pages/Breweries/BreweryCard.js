@@ -1,14 +1,15 @@
 import React from "react";
 import {Button, Card, ButtonGroup, Container} from 'react-bootstrap';
 import { UpdateBreweryForm } from "./UpdateBreweryForm";
+import BreweryDetails from "./BreweryDetails";
+
+import { Link } from "react-router-dom";
 
 import './breweries.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 import axios from "axios";
 
-export default function BreweryCard({ brewery,  fetchData, deleteBrewery }) {
+export default function BreweryCard({brewery}) {
 
     //define BREWERIES endpoint
     const Endpoint = "https://64bedc3b5ee688b6250d0246.mockapi.io/breweries";
@@ -28,10 +29,7 @@ export default function BreweryCard({ brewery,  fetchData, deleteBrewery }) {
                     </Card.Text>
                     
                     <Card.Footer>
-                        <ButtonGroup>
-                            <UpdateBreweryForm breweryId={brewery.id} fetchData={fetchData}/>
-                            <Button variant="danger" onClick={() => deleteBrewery(brewery.id)}>Delete <FontAwesomeIcon icon={faTrashCan} /></Button>
-                        </ButtonGroup>
+                            <Link to={`/brewery-details/${brewery.id}`} element={<BreweryDetails/>} className='btn btn-warning'>View Brewery Page</Link>                       
                     </Card.Footer>
                 </Card.Body>
             </Card>

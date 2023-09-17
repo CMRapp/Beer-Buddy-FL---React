@@ -16,6 +16,8 @@ export function NewBeerForm ({fetchData}) {
     const [ibu, setIbu] = useState('');
     const [style, setStyle] = useState('');
     const [imgURL, setImgURL] = useState('');
+    const [notes, setNotes] = useState('');
+    const [type, setType] = useState('');
     const [reviews, setReviews] = useState([]);             //currently not used
     const [dateAdded, setDateAdded] = useState(new Date()); //currently not used
     
@@ -37,10 +39,10 @@ export function NewBeerForm ({fetchData}) {
     async function addNewBeer () {
 
         //validate inputs are not blank
-        if (name && brewery && abv && ibu && style && imgURL) {             
+        if (name && brewery && abv && ibu && style && imgURL && notes && type) {             
             //if valid input, try adding brewery
             try {
-                const newBeer = {name, brewery, abv, ibu, style, imgURL};
+                const newBeer = {name, brewery, abv, ibu, style, imgURL, notes, type};
                 const resp = await axios.post(Endpoint, newBeer);
             } catch (error) {
                 console.log("Error adding Beer! ", error);
@@ -51,6 +53,8 @@ export function NewBeerForm ({fetchData}) {
                 setIbu('');
                 setStyle('');
                 setImgURL('');
+                setNotes('');
+                setType('');
                 hideModal();                                //close the modal
                 fetchData();                                //refresh the data
                 
@@ -126,6 +130,47 @@ export function NewBeerForm ({fetchData}) {
                         onChange={(e) => setImgURL(e.target.value)}
                         value={imgURL}
                     />
+
+                    <Form.Control  
+                        as='textarea'
+                        rows={3}
+                        name='notes'
+                        placeholder = 'Enter Brewer Notes'
+                        onChange={(e) => setNotes(e.target.value)}
+                        value={notes}
+                    />
+
+                    {['radio'].map((type) => (
+                            <div key={`inline-${type}`} className="mb-3">
+                            <Form.Check
+                                inline
+                                label="Core Beer"
+                                name="core"
+                                value="Core Beer"
+                                type={type}
+                                id={`inline-${type}-core`}
+                                onChange={(e) => setType(e.target.value)}
+                            />
+                            <Form.Check
+                                inline
+                                label="Seasonal Beer"
+                                name="seasonal"
+                                value="Seasonal Beer"
+                                type={type}
+                                id={`inline-${type}-seasonal`}
+                                onChange={(e) => setType(e.target.value)}
+                            />
+                            <Form.Check
+                                inline
+                                label="Special Release Beer"
+                                name="special"
+                                value="Special Release Beer"
+                                type={type}
+                                id={`inline-${type}-special`}
+                                onChange={(e) => setType(e.target.value)}
+                            />
+                            </div>
+                        ))}
                 
                 </Form>
             </ModalBody>
