@@ -29,8 +29,6 @@ function Navigation() {
             <Nav.Link as={Link}  eventKey="/" to="/" >Home</Nav.Link>
             <Nav.Link as={Link}  eventKey="/beers" to="/beers">Beers</Nav.Link>
             <Nav.Link as={Link}  eventKey="/breweries" to="/breweries">Breweries</Nav.Link>
-            <Nav.Link as={Link}  eventKey="/styles" to="/styles">Styles</Nav.Link>
-            <Nav.Link as={Link}  eventKey="/reviews" to="/reviews">Reviews</Nav.Link>
 
           </Nav>
           <Form className="d-flex ms-auto">

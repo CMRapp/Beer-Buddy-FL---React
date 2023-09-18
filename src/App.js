@@ -7,8 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './Pages/Home/Home'
 import Beers from './Pages/Beers/Beers';
 import Breweries from './Pages/Breweries/Breweries';
-import Reviews from './Pages/Reviews/Reviews';
-import Styles from './Pages/Styles/Styles';
 import NotFound from './Pages/NotFound/NotFound';
 import BeerDetails from './Pages/Beers/BeerDetails';
 import BreweryDetails from './Pages/Breweries/BreweryDetails';
@@ -32,8 +30,6 @@ export default function App() {
           <Route exact path="/" activeClassName="active"  element={<Home />}/>
           <Route path="/beers" activeClassName="active" element={<Beers />}/>
           <Route path="/breweries" activeClassName="active" element={<Breweries />}/>
-          <Route path="/styles" activeClassName="active" element={<Styles />}/>
-          <Route path="/reviews" activeClassName="active" element={<Reviews />}/>
           <Route path="/beer-details/:key" activeClassName="active" element={<BeerDetails />}/>
           <Route path="/brewery-details/:key" activeClassName="active" element={<BreweryDetails />}/>
           <Route  path="*" element={<NotFound />}/>
